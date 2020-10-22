@@ -1,0 +1,250 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat";
+}
+.App {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-list-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1230px;
+}
+nav {
+  width: 100%;
+  font-size: 24px;
+  background: #0082e6;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: white;
+  padding-left: 25px;
+  display: flex;
+}
+
+nav > label {
+  padding-left: 10px;
+  line-height: 50px;
+}
+
+.card-container {
+  margin: 0.9em 0.5em;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 290px;
+  border-radius: 0.29rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  transition: box-shadow 0.1s ease, transform 0.1s ease,
+    -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
+}
+
+.image {
+  display: block;
+  flex: 0 0 auto;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.image > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.status {
+  display: flex;
+  align-items: center;
+}
+.status .live-status {
+  height: 0.5rem;
+  width: 0.5rem;
+  margin-right: 0.375rem;
+  border-radius: 50%;
+}
+
+.live-status.alive {
+  background: rgb(85, 204, 68);
+}
+
+.live-status.dead {
+  background: rgb(214, 61, 46);
+}
+
+.content {
+  flex-grow: 1;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  background: 0 0;
+  margin: 0;
+  padding: 1em 1em;
+  box-shadow: none;
+  font-size: 1em;
+  border-radius: 0;
+}
+
+.content .header {
+  color: rgba(0, 0, 0, 0.85);
+  transition: color 0.1s ease;
+  font-weight: 700;
+}
+
+.content .header:hover {
+  color: #1e70bf;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1e70bf;
+}
+
+.content .meta {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.content .description {
+  margin-top: 0.5em;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.view-more-btn {
+  height: 90%;
+  padding: 0px;
+  border: none;
+  color: #1e70bf;
+  background: transparent;
+  font-size: 14px;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+}
+
+.modal-container section {
+  background: #fdfeff;
+  width: 90%;
+  max-width: 650px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-container button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  align-self: flex-start;
+}
+
+.modal-container .modal-action-btn {
+  font-size: 25px;
+  color: #0082e6;
+  align-self: flex-end;
+  margin-right: 30px;
+  position: absolute;
+  top: -15.5px;
+  right: -42.5px;
+  line-height: 20px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0082e6;
+}
+
+.modal-container .tab-cta {
+  color: #9fc8e8;
+  align-self: center;
+  width: 80%;
+}
+
+.modal-container .tab-cta:focus {
+  outline: none;
+}
+
+.modal-container .tab-cta.active {
+  color: #0082e6;
+}
+
+.modal-header {
+  display: flex;
+  padding: 30px;
+  align-items: center;
+}
+
+.modal-header h1 {
+  padding-left: 20px;
+  font-size: 25px;
+}
+
+.character-img {
+  height: 90px;
+  width: 90px;
+}
+
+.tab-header {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0;
+  height: 50px;
+  align-items: center;
+}
+
+.tab-header li {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.tab-header li.active {
+  background-color: #dbe9f1;
+}
+
+.tab-container {
+  padding-left: 30px;
+}
+
+.episode-list {
+  height: 380px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 768px) {
+  .modal-container {
+    display: block !important;
+  }
+  .modal-container section {
+    height: 80%;
+    overflow-y: initial !important;
+  }
+
+  .modal-container section .row {
+    overflow-y: auto;
+  }
+}

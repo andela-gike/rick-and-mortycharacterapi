@@ -1,11 +1,27 @@
 import * as React from "react";
-import "./styles.css";
+import "./styles.scss";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Card from "./components/Card";
+import useFetch from "./customHooks/useFetch";
 
-export default function App() {
+const App = () => {
+  const { currentStatus, data, error } = useFetch<[]>("character");
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <Header />
+      <section className="card-list-display">
+        {error && currentStatus === "error" ? (
+          <div>There was an error fetching this information</div>
+        ) : currentStatus === "fetched" ? (
+          data.results.map((result) => <Card key={result.id} {...result} />)
+        ) : (
+          <div>Loading</div>
+        )}
+      </section>
+      <Footer />
     </div>
   );
-}
+};
+
+export default App;
