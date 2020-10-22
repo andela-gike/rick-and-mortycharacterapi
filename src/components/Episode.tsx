@@ -22,7 +22,7 @@ const EpisodeList: FC<EpisodeProps> = ({ url, episodeList }) => {
             data &&
             data.map((epi) => (
               <li key={epi.id}>
-                {epi.episode}-{epi.name}
+                {epi.episode} - {epi.name}
               </li>
             ))}
         </ul>

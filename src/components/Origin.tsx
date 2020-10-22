@@ -10,10 +10,11 @@ type FieldProps = {
   label: string;
   value: string;
 };
-const Field = ({ label, value }: FieldProps) => {
+const TextField = ({ label, value }: FieldProps) => {
   return (
     <div>
-      <span className={"label " + label}>{label}</span> <span>{value}</span>
+      <span className="label">{label}:</span>{" "}
+      <span className="value">{value}</span>
     </div>
   );
 };
@@ -28,11 +29,12 @@ const OriginInfo: FC<OriginProps> = ({ url, name }) => {
         <div>There was an error fetching this information</div>
       ) : (
         <div className="origin-wrap">
-          <Field label="origin" value={name} />
+          <TextField label="Name" value={name} />
           {currentStatus === "fetched" && (
             <>
-              <Field label="dimension" value={data.dimension} />
-              <Field label="residents" value={data.residents.length} />
+              <TextField label="Type" value={data.type} />
+              <TextField label="Dimension" value={data.dimension} />
+              <TextField label="Residents" value={data.residents.length} />
             </>
           )}
         </div>

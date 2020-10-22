@@ -1,12 +1,18 @@
-import * as React from "react";
+import React, { useState } from "react";
 import "./styles.scss";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Card from "./components/Card";
 import useFetch from "./customHooks/useFetch";
+import Pagination from "./components/Pagination";
 
 const App = () => {
-  const { currentStatus, data, error } = useFetch<[]>("character");
+  const [goToPage, setGoToPage] = useState("");
+  const { currentStatus, data, error } = useFetch<[]>(`character/${goToPage}`);
+  const onPageChanged = (dataList: any) => {
+    console.log("called", goToPage);
+    const { currentPage } = dataList;
+    setGoToPage(`?page=${currentPage}`);
+  };
   return (
     <div className="App">
       <Header />
@@ -19,7 +25,15 @@ const App = () => {
           <div>Loading</div>
         )}
       </section>
-      <Footer />
+      {currentStatus === "fetched" && (
+        <Pagination
+          onPageChanged={onPageChanged}
+          totalRecords={data.info.count}
+          pageLimit={20}
+          pageNeighbours={1}
+          totalPages={data.info.pages}
+        />
+      )}
     </div>
   );
 };

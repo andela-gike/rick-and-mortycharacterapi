@@ -1,10 +1,12 @@
+$base-color: #c8dae7;
+$light-background: lighten(desaturate($base-color, 50%), 12.5%);
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat";
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 .App {
-  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +18,7 @@ body {
   width: 100%;
   max-width: 1230px;
 }
-nav {
+.nav-header {
   width: 100%;
   font-size: 24px;
   background: #0082e6;
@@ -27,7 +29,7 @@ nav {
   display: flex;
 }
 
-nav > label {
+.nav-header > label {
   padding-left: 10px;
   line-height: 50px;
 }
@@ -85,12 +87,19 @@ nav > label {
   box-shadow: none;
   font-size: 1em;
   border-radius: 0;
-}
-
-.content .header {
-  color: rgba(0, 0, 0, 0.85);
-  transition: color 0.1s ease;
-  font-weight: 700;
+  .header {
+    color: #42526e;
+    transition: color 0.1s ease;
+    font-weight: 700;
+  }
+  .meta {
+    color: #737881;
+    margin-top: 5px;
+  }
+  .description {
+    margin-top: 0.5em;
+    color: rgba(0, 0, 0, 0.68);
+  }
 }
 
 .content .header:hover {
@@ -105,14 +114,6 @@ a:hover {
   color: #1e70bf;
 }
 
-.content .meta {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.content .description {
-  margin-top: 0.5em;
-  color: rgba(0, 0, 0, 0.68);
-}
 
 .view-more-btn {
   height: 90%;
@@ -178,6 +179,7 @@ a:hover {
   color: #9fc8e8;
   align-self: center;
   width: 80%;
+  font-size: 16px
 }
 
 .modal-container .tab-cta:focus {
@@ -194,7 +196,17 @@ a:hover {
   align-items: center;
 }
 
+.label {
+  color: #42526e;
+  font-weight: 700;
+}
+
+.value {
+  color: #1e293e
+}
+
 .modal-header h1 {
+  color: #42526e;
   padding-left: 20px;
   font-size: 25px;
 }
@@ -210,6 +222,7 @@ a:hover {
   justify-content: space-evenly;
   width: 100%;
   padding: 0;
+  margin:0;
   height: 50px;
   align-items: center;
 }
@@ -227,12 +240,57 @@ a:hover {
 
 .tab-container {
   padding-left: 30px;
+  h1 {
+    color: #42526e
+  }
 }
 
 .episode-list {
+  list-style: none;
+  padding: 0px;
   height: 380px;
   overflow: hidden;
+  color: #1e293e;
   overflow-y: scroll;
+}
+
+ul.pagination {
+  margin-top: 0;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  display: flex;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+  li.page-item.active {
+    button.page-link {
+      color: saturate(darken($base-color, 50%), 5%);
+      background-color: saturate(lighten($base-color, 7.5%), 2.5%) !important;
+      border-color: $base-color;
+    }
+  }
+
+  button.page-link {
+    padding: 0.75rem 1rem;
+    min-width: 3.5rem;
+    text-align: center;
+    box-shadow: none;
+    border: 1px solid $base-color;
+    color: saturate(darken($base-color, 30%), 10%);
+    font-weight: 900;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: $light-background;
+    }
+  }
+}
+
+@media (min-height: 680px) {
+  .episode-list {
+    height: 250px;
+  }
+
 }
 
 @media only screen and (max-width: 768px) {

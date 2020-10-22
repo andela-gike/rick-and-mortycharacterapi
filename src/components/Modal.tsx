@@ -37,13 +37,13 @@ const ModalComponent: FC<ModalProps> = ({ details, closeDetails }) => {
           <Tabs>
             <Tab title="Character Details">
               <h1>Gender</h1>
-              <span>{details.gender}</span>
+              <span className="value">{details.gender}</span>
               <OriginInfo
                 url={cleanOriginUrl(details.origin.url)}
                 name={details.origin.name}
               />
               <h1>Location</h1>
-              <span>{details.location.name}</span>
+              <span className="value">{details.location.name}</span>
             </Tab>
             <Tab title="Episodes">
               <EpisodeList url="episode/" episodeList={details.episodeList} />
